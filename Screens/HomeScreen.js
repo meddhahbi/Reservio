@@ -9,7 +9,7 @@ import {
   Image,
 } from "react-native";
 import React, { useLayoutEffect, useState } from "react";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 import { Ionicons } from "@expo/vector-icons";
 import Header from "../Component/Header";
 import { Feather } from "@expo/vector-icons";
@@ -26,7 +26,8 @@ import {
 const HomeScreen = () => {
   const navigation = useNavigation();
   const [selectedDates, setSelectedDates] = useState();
-  console.log(selectedDates);
+  //console.log(selectedDates);
+  const route = useRoute();
 
   const [rooms, setRooms] = useState(1);
   const [adults, setAdults] = useState(2);
@@ -73,6 +74,8 @@ const HomeScreen = () => {
     );
   };
 
+  console.log(route.params)
+
   return (
     <>
       <View>
@@ -88,6 +91,7 @@ const HomeScreen = () => {
             }}
           >
             <Pressable
+            onPress={()=>navigation.navigate("Search")}
               style={{
                 flexDirection: "row",
                 alignItems: "center",
@@ -101,7 +105,7 @@ const HomeScreen = () => {
               <Feather name="search" size={24} color="black" />
               <TextInput
                 placeholderTextColor="black"
-                placeholder="Enter your destination"
+                placeholder={route?.params ? route.params.input : "Enter Your Destination"}
               />
             </Pressable>
 
