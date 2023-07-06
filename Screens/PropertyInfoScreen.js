@@ -11,6 +11,7 @@ import React, { useLayoutEffect } from "react";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { pixelNormalize } from "../Component/Normalise";
 import { MaterialIcons } from "@expo/vector-icons";
+import Amenities from "../Component/Amenities";
 
 const PropertyInfoScreen = () => {
   const route = useRoute();
@@ -123,6 +124,20 @@ const PropertyInfoScreen = () => {
             marginTop: 15,
           }}
         />
+        <Amenities />
+
+        <Text
+          style={{
+            borderColor: "#E0E0E0",
+            borderWidth: 3,
+            height: 1,
+            marginTop: 15,
+          }}
+        />
+        <Pressable style={{backgroundColor:"#6CB4EE", position:"absolute",bottom:20,padding:15,width:"95%", marginHorizontal:10}}>
+          <Text style={{textAlign:"center",color:"white", fontWeight:"bold", fontSize:17}}>Select Availibity</Text>
+        </Pressable>
+
       </ScrollView>
     </SafeAreaView>
   );
