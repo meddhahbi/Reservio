@@ -13,6 +13,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import SearchScreen from "./Screens/SearchScreen";
 import PlacesScreen from "./Screens/PlacesScreen";
 import MapScreen from "./Screens/MapScreen";
+import PropertyInfoScreen from "./Screens/PropertyInfoScreen";
 
 
 const StackNavigator = () => {
@@ -92,6 +93,7 @@ const StackNavigator = () => {
       <Stack.Screen name="Search" component={SearchScreen} options={{headerShown:false}} />
       <Stack.Screen name="Places" component={PlacesScreen} />
       <Stack.Screen name="Map" component={MapScreen} options={{headerShown:false}} />
+      <Stack.Screen name="Info" component={PropertyInfoScreen} />
     </Stack.Navigator>
    </NavigationContainer>
   );

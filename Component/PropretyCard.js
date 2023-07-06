@@ -9,6 +9,7 @@ import {
 import React from "react";
 import { AntDesign } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
 const PropretyCard = ({
   rooms,
@@ -19,9 +20,21 @@ const PropretyCard = ({
   availableRooms,
 }) => {
   const { width, height } = Dimensions.get("window");
+  const navigation = useNavigation();
   return (
     <View>
       <Pressable
+      onPress={()=>navigation.navigate("Info",{
+        name:property.name,
+        rating : property.rating,
+        oldPrice : property.oldPrice,
+        newPrice : property.newPrice,
+        photos : property.photos,
+        rooms : property.rooms,
+        adults : property.adults,
+        children : property.children,
+        selectedDates : property.selectedDates,
+      })}
         style={{ margin: 15, flexDirection: "row", backgroundColor: "white" }}
       >
         <View>
@@ -51,7 +64,7 @@ const PropretyCard = ({
               marginTop: 7,
             }}
           >
-            <MaterialIcons name="stars" size={24} color="black" />
+            <MaterialIcons name="stars" size={24} color="green" />
             <Text>{property.rating}</Text>
             <View
               style={{
