@@ -198,7 +198,9 @@ const PropertyInfoScreen = () => {
             <Text style={{ fontSize: 16, fontWeight: "600", marginBottom: 3 }}>
               Check In
             </Text>
-            <Text style={{ fontSize: 15, fontWeight: "bold", color: "#007FFF" }}>
+            <Text
+              style={{ fontSize: 15, fontWeight: "bold", color: "#007FFF" }}
+            >
               {route.params.selectedDates.startDate}
             </Text>
           </View>
@@ -207,18 +209,25 @@ const PropertyInfoScreen = () => {
             <Text style={{ fontSize: 16, fontWeight: "600", marginBottom: 3 }}>
               Check Out
             </Text>
-            <Text style={{ fontSize: 15, fontWeight: "bold", color: "#007FFF" }}>
+            <Text
+              style={{ fontSize: 15, fontWeight: "bold", color: "#007FFF" }}
+            >
               {route.params.selectedDates.endDate}
             </Text>
           </View>
         </View>
 
-          <View style={{margin:12}}>
-            <Text style={{fontSize:16,fontWeight:"600", marginBottom:3}}>Rooms and Guests</Text>
-            <Text style={{fontSize:16,fontWeight:"bold", color:"#007FFF"}}>{route.params.rooms} rooms {route.params.adults} adults {route.params.children} childrens</Text>
-          </View>
+        <View style={{ margin: 12 }}>
+          <Text style={{ fontSize: 16, fontWeight: "600", marginBottom: 3 }}>
+            Rooms and Guests
+          </Text>
+          <Text style={{ fontSize: 16, fontWeight: "bold", color: "#007FFF" }}>
+            {route.params.rooms} rooms {route.params.adults} adults{" "}
+            {route.params.children} childrens
+          </Text>
+        </View>
 
-          <Text
+        <Text
           style={{
             borderColor: "#E0E0E0",
             borderWidth: 3,
@@ -226,7 +235,6 @@ const PropertyInfoScreen = () => {
             marginTop: 15,
           }}
         />
-
 
         <Amenities />
 
@@ -239,6 +247,19 @@ const PropertyInfoScreen = () => {
           }}
         />
         <Pressable
+          onPress={() =>
+            navigation.navigate("Rooms", {
+              rooms: route.params.availableRooms,
+              oldPrice: route.params.oldPrice,
+              newPrice: route.params.newPrice,
+              name: route.params.name,
+              children: route.params.children,
+              adults: route.params.adults,
+              rating: route.params.rating,
+              startDate: route.params.selectedDates.startDate,
+              endDate: route.params.selectedDates.endDate,
+            })
+          }
           style={{
             backgroundColor: "#6CB4EE",
             position: "absolute",
@@ -259,10 +280,6 @@ const PropertyInfoScreen = () => {
             Select Availibity
           </Text>
         </Pressable>
-
-
-
-
       </ScrollView>
     </SafeAreaView>
   );

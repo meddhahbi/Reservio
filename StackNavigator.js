@@ -15,6 +15,7 @@ import PlacesScreen from "./Screens/PlacesScreen";
 import MapScreen from "./Screens/MapScreen";
 import PropertyInfoScreen from "./Screens/PropertyInfoScreen";
 import RoomsScreen from "./Screens/RoomsScreen";
+import UserScreen from "./Screens/UserScreen";
 
 
 const StackNavigator = () => {
@@ -96,6 +97,7 @@ const StackNavigator = () => {
       <Stack.Screen name="Map" component={MapScreen} options={{headerShown:false}} />
       <Stack.Screen name="Info" component={PropertyInfoScreen} />
       <Stack.Screen name="Rooms" component={RoomsScreen} />
+      <Stack.Screen name="User" component={UserScreen} />
     </Stack.Navigator>
    </NavigationContainer>
   );
