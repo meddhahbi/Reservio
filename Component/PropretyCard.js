@@ -31,9 +31,11 @@ const PropretyCard = ({
         newPrice : property.newPrice,
         photos : property.photos,
         rooms : property.rooms,
-        adults : property.adults,
-        children : property.children,
-        selectedDates : property.selectedDates,
+        adults : adults,
+        children : children,
+        selectedDates : selectedDates,
+        availableRooms:availableRooms,
+        rooms:rooms,
       })}
         style={{ margin: 15, flexDirection: "row", backgroundColor: "white" }}
       >
