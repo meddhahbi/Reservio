@@ -16,6 +16,7 @@ import MapScreen from "./Screens/MapScreen";
 import PropertyInfoScreen from "./Screens/PropertyInfoScreen";
 import RoomsScreen from "./Screens/RoomsScreen";
 import UserScreen from "./Screens/UserScreen";
+import ConfirmationScreen from "./Screens/ConfirmationScreen";
 
 
 const StackNavigator = () => {
@@ -98,6 +99,7 @@ const StackNavigator = () => {
       <Stack.Screen name="Info" component={PropertyInfoScreen} />
       <Stack.Screen name="Rooms" component={RoomsScreen} />
       <Stack.Screen name="User" component={UserScreen} />
+      <Stack.Screen name="Confirmation" component={ConfirmationScreen} />
     </Stack.Navigator>
    </NavigationContainer>
   );
