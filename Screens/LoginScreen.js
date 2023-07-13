@@ -1,50 +1,67 @@
 import {
-  KeyboardAvoidingView,
-  Pressable,
-  SafeAreaView,
   StyleSheet,
   Text,
-  TextInput,
   View,
+  SafeAreaView,
+  KeyboardAvoidingView,
+  TextInput,
+  Pressable,
 } from "react-native";
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
-import {signInWithEmailAndPassword} from "firebase/auth";
 import { auth } from "../FirebaseConfig";
-
-
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 const LoginScreen = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigation = useNavigation();
 
-  const login = () => {
-    signInWithEmailAndPassword(auth,email,password).then((userCredential) => {
-       console.log("user credential", userCredential);
-       const user = userCredential.user;
-       console.log("user details", user);
-    })
-}
+//   console.log(userCredentials.user.stsTokenManager.accessToken);
+//   AsyncStorage.setItem(
+//     "tokenUser",
+//     userCredentials.user.stsTokenManager.accessToken
+//   );
 
+//   useEffect(() => {
+//     const getMyObject = async () => {
+//       try {
+//         const jsonValue = await AsyncStorage.getItem("tokenUser");
+//         console.log("jsonValue");
+//         if (jsonValue) {
+//           navigation.replace("Main");
+//         }
+//       } catch (e) {
+//         console.log(e);
+//       }
+//     };
+//     getMyObject();
+//   }, [token]);
 
-   useEffect(() => {
-    try {
-      const unsubscribe = auth.onAuthStateChanged((authUser) => {
-        if (authUser) {
-          navigation.replace("Main");
-        }
-      });
+ const login = () => {
+     signInWithEmailAndPassword(auth,email,password).then((userCredential) => {
+      if(userCredential){
+        navigation.replace("Main");
+        console.log("user credential", userCredential);
+      }
+        const user = userCredential.user;
+        console.log("user details", user);
+     })
+ }
 
-      return unsubscribe;
-    } catch (e) {
-      console.log(e);
-    }
-  }, []);
+  // useEffect(() => {
+  //   try {
+  //     const unsubscribe = auth.onAuthStateChanged((authUser) => {
+  //       if (authUser) {
+  //         navigation.replace("Main");
+  //       }
+  //     });
 
-
- 
-
+  //     return unsubscribe;
+  //   } catch (e) {
+  //     console.log(e);
+  //   }
+  // }, []);
 
   return (
     <SafeAreaView
@@ -66,8 +83,9 @@ const LoginScreen = () => {
           <Text style={{ color: "#003580", fontSize: 17, fontWeight: "700" }}>
             Sign In
           </Text>
+
           <Text style={{ marginTop: 15, fontSize: 18, fontWeight: "500" }}>
-            Sign In to your account
+            Sign In to Your Account
           </Text>
         </View>
 
@@ -80,7 +98,7 @@ const LoginScreen = () => {
             <TextInput
               value={email}
               onChangeText={(text) => setEmail(text)}
-              placeholder="Enter your email..."
+              placeholder="enter your email id"
               placeholderTextColor={"black"}
               style={{
                 fontSize: email ? 18 : 18,
@@ -101,7 +119,7 @@ const LoginScreen = () => {
               value={password}
               onChangeText={(text) => setPassword(text)}
               secureTextEntry={true}
-              placeholder="Enter your password..."
+              placeholder="Password"
               placeholderTextColor={"black"}
               style={{
                 fontSize: password ? 18 : 18,
@@ -138,15 +156,14 @@ const LoginScreen = () => {
           </Text>
         </Pressable>
 
-
-            <Pressable onPress={()=>navigation.navigate("Register")} style={{marginTop:20}}>
-
-              <Text style={{textAlign:"center", color:"gray",fontSize:17}}>Don't have account ? Sign Up</Text>
-
-            </Pressable>
-
-
-
+        <Pressable
+          onPress={() => navigation.navigate("Register")}
+          style={{ marginTop: 20 }}
+        >
+          <Text style={{ textAlign: "center", color: "gray", fontSize: 17 }}>
+            Don't have an account? Sign up
+          </Text>
+        </Pressable>
       </KeyboardAvoidingView>
     </SafeAreaView>
   );

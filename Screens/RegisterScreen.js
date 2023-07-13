@@ -57,6 +57,9 @@ const RegisterScreen = () => {
         phone:phone,
       })
 
+      console.log(email,uid);
+      navigation.navigate("Main");
+
     })
 
   }
